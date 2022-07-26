@@ -1,0 +1,3 @@
+Left  1: hi there
+Diff   :         ^^^^^^^^
+Right 1: hi there, mister

@@ -1,0 +1,6 @@
+Left  1: hello,
+Diff   :      ^
+Right 1: hello
+Left  2: world!
+Diff   :      ^
+Right 2: world
