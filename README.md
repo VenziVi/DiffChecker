@@ -13,9 +13,9 @@ The program reads the file paths from the input arguments and prints the result 
 ## Tests:
 
 #### Left file: 
-`helio thire!` 
-`how` 
-`ari you.`
+`helio thire!`<br> 
+`how`<br> 
+`ari you.`<br>
 
 #### Right file: 
 `hello there` 
