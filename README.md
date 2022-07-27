@@ -24,7 +24,7 @@ The program reads the file paths from the input arguments and prints the result 
 
 #### Output: 
 `Left  1: helio thire!` <br>
-`Diff   : ^ ^ ^` <br>
+`Diff   :    ^    ^  ^` <br>
 `Right 1: hello there` <br>
 `Left  3: ari you.` <br>
 `Diff   :   ^` <br>
