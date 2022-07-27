@@ -7,21 +7,20 @@ The program reads the file paths from the input arguments and prints the result 
 -If files are identical prints: "Files are identical."
 
 -In case of detected difference, the program marks different characters and lines with the "^" symbol.
-----
 
 <br>
 
 ## Tests:
 
 #### Left file: 
-`helio thire! 
-`how 
-`ari you.
+`helio thire!` 
+`how` 
+`ari you.`
 
 #### Right file: 
-`hello there 
-`how 
-`are you.
+`hello there` 
+`how` 
+`are you.`
 
 #### Output: 
 `Left  1: helio thire!` 
@@ -34,8 +33,8 @@ The program reads the file paths from the input arguments and prints the result 
 ------------------
 
 #### Left file: 
-`` 
-``
+` ` 
+` `
 
 #### Right file: 
 `hello` 
