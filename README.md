@@ -13,38 +13,38 @@ The program reads the file paths from the input arguments and prints the result 
 ## Tests:
 
 #### Left file: 
-`helio thire!`<br> 
-`how`<br> 
-`ari you.`<br>
+`helio thire!` <br> 
+`how` <br> 
+`ari you.` <br>
 
 #### Right file: 
-`hello there` 
-`how` 
-`are you.`
+`hello there` <br> 
+`how` <br> 
+`are you.` <br>
 
 #### Output: 
-`Left  1: helio thire!` 
-`Diff   : ^ ^ ^` 
-`Right 1: hello there` 
-`Left  3: ari you.` 
-`Diff   :   ^` 
-`Right 3: are you.`
+`Left  1: helio thire!` <br>
+`Diff   : ^ ^ ^` <br> 
+`Right 1: hello there` <br> 
+`Left  3: ari you.` <br>
+`Diff   :   ^` <br>
+`Right 3: are you.` <br>
 
 ------------------
 
 #### Left file: 
-` ` 
-` `
+` ` <br>
+` ` <br>
 
 #### Right file: 
-`hello` 
-`world`
+`hello` <br>
+`world` <br>
 
 #### Output: 
-`Left  1: ` 
-`Diff   : ^^^^^` 
-`Right 1: hello` 
-`Left  2:` 
-`Diff   : ^^^^^` 
-`Right 2: world`
+`Left  1: ` <br>
+`Diff   : ^^^^^` <br>
+`Right 1: hello` <br>
+`Left  2:` <br>
+`Diff   : ^^^^^` <br>
+`Right 2: world` <br>
 
