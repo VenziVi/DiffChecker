@@ -22,10 +22,10 @@ The program reads the file paths from the input arguments and prints the result 
 `how` <br>
 `are you.` <br>
 
--Output: 
-Left  1: helio thire! <br>
-Diff   :    ^    ^  ^ <br>
-Right 1: hello there <br>
+#### Output: 
+# Left  1: helio thire! <br>
+# Diff   :    ^    ^  ^ <br>
+# Right 1: hello there <br>
 Left  3: ari you. <br>
 Diff   :   ^ <br>
 Right 3: are you. <br>
