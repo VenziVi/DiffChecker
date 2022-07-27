@@ -1,5 +1,5 @@
-#ifndef CODE_ACADEMY_DIFF_TOOL_COMPARE_H
-#define CODE_ACADEMY_DIFF_TOOL_COMPARE_H
+#ifndef _COMPARE_H
+#define _COMPARE_H
 
 #include "FileHandler.h"
 
@@ -16,4 +16,4 @@ typedef struct
 comparison* compareContents(fileContent *leftFile, fileContent *rightFile, size_t *resultSize);
 void deinitComparisonResult(comparison *comparesonResult, size_t size);
 
-#endif // CODE_ACADEMY_DIFF_TOOL_COMPARE_H
+#endif // _COMPARE_H

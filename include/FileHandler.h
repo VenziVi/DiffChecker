@@ -1,5 +1,5 @@
-#ifndef CODE_ACADEMY_DIFF_TOOL_FILE_HANDLER_H
-#define CODE_ACADEMY_DIFF_TOOL_FILE_HANDLER_H
+#ifndef _FILE_HANDLER_H
+#define _FILE_HANDLER_H
 
 #include <stddef.h>
 
@@ -13,4 +13,4 @@ typedef struct
 fileContent readFile(const char *filePath);
 void deinitFileContent(fileContent *file);
 
-#endif // CODE_ACADEMY_DIFF_TOOL_FILE_HANDLER_H
+#endif // _FILE_HANDLER_H
