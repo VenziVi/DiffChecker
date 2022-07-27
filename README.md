@@ -7,7 +7,6 @@ The program reads the file paths from the input arguments and prints the result 
 -If files are identical prints: "Files are identical."
 
 -In case of detected difference, the program marks different characters and lines with the "^" symbol.
-----
 
 <br>
 
