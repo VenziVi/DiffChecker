@@ -1,6 +1,0 @@
-Left  1:
-Diff   : ^^^^^
-Right 1: hello
-Left  2:
-Diff   : ^^^^^
-Right 2: world

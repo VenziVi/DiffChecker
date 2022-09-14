@@ -1,2 +1,0 @@
-Left  1: hi there
-Right 1: hi there, mister

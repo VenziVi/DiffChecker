@@ -1,78 +1,38 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "ContentStruct.h"
 #include "FileHandler.h"
+#include <stdio.h>
 
-static fileContent readLinesFromFile(FILE *file_ptr)
+static void readLinesFromFile(FILE* filePtr, FileContent* outContent)
 {
-    fileContent outContent = {0};
-    size_t rowIndex = 0;
-
-    size_t capacity = 5;
-    outContent.lines = malloc(sizeof(char*) * capacity);
-
-    size_t lineCapacity = 10;
-    outContent.lines[rowIndex] = malloc(lineCapacity);
-
     char currentChar = 0;
-    size_t lineIndex = 0;
-
-    while ((currentChar = fgetc(file_ptr)) != EOF)
+    
+    while ((currentChar = fgetc(filePtr)) != EOF)
     {
         if (currentChar == '\n')
-        {
-            if ((rowIndex + 1) == capacity)
-            {
-                capacity *= 2;
-                outContent.lines = realloc(outContent.lines, sizeof(char*) * capacity);
-            }
-
-            outContent.lines[rowIndex][lineIndex] = '\0';
-            rowIndex++;
-
-            lineCapacity = 10;
-            outContent.lines[rowIndex] = malloc(lineCapacity);
-            lineIndex = 0;
+        {       
+            addChar(&outContent->rows[outContent->size], '\0');
+            moveToNextRow(outContent);
         }
         else
         {
-            if ((lineIndex + 1) == lineCapacity)
-            {
-               lineCapacity *= 2;
-               outContent.lines[rowIndex] = realloc(outContent.lines[rowIndex], lineCapacity);
-            }
-
-            outContent.lines[rowIndex][lineIndex] = currentChar;
-            lineIndex++;
+            addChar(&outContent->rows[outContent->size], currentChar);
         }
     }
-
-    outContent.numberOfRows = rowIndex;
-    return outContent;
 }
 
-fileContent readFile(const char *filePath)
+bool readFile(FileContent* content, const char *filePath)
 {
-    FILE *file_ptr = NULL;
-    file_ptr = fopen(filePath, "r");
-    
-    if (file_ptr == NULL)
-    {
-        printf("Cannot open file: %s", filePath);   
-        exit(1);
+    FILE *filePtr = NULL;
+    filePtr = fopen(filePath, "r");
+
+    if (filePtr == NULL)
+    { 
+        return false;
     }
 
-    fileContent outContent = readLinesFromFile(file_ptr);
+    readLinesFromFile(filePtr, content);
     
-    fclose(file_ptr);
-    return outContent;
+    fclose(filePtr);
+    return true;
 }
 
-void deinitFileContent(fileContent *file)
-{
-    for (size_t i = 0; i <= file->numberOfRows; i++)
-    {
-        free(file->lines[i]);
-    }
-    
-    free(file->lines);
-}

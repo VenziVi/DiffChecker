@@ -1,0 +1,6 @@
+Left  1: helio thire!
+Diff   :    ^    ^  ^
+Right 1: hello there
+Left  3: ari you.
+Diff   :   ^
+Right 3: are you.

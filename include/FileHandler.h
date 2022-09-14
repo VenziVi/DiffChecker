@@ -1,16 +1,9 @@
-#ifndef _FILE_HANDLER_H
-#define _FILE_HANDLER_H
+#ifndef FILE_HANDLER_H_
+#define FILE_HANDLER_H_
 
-#include <stddef.h>
+#include "ContentStruct.h"
+#include <stdbool.h>
 
-typedef struct 
-{
-    char **lines;
-    size_t numberOfRows;
+bool readFile(FileContent* content, const char *filePath);
 
-} fileContent;
-
-fileContent readFile(const char *filePath);
-void deinitFileContent(fileContent *file);
-
-#endif // _FILE_HANDLER_H
+#endif // FILE_HANDLER_H_S
