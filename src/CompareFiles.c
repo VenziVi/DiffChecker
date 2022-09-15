@@ -3,19 +3,17 @@
 #include "CompareFiles.h"
 #include <stdbool.h>
 
-static void completeLine(Line* line, DiffRow* diffRow, num_v index, bool* isDifferent)
+static void completeLine(Line* line, DiffRow* diffRow, num_v index)
 {
     while (line->line[index] != END_OF_STRING)
     {
         addSymbolToDiffRol(diffRow, DIFFERENCE_SYMBOL);
-        *isDifferent = true;
         index++;
     }
 }
 
-static bool compareLines(Line* leftLine, Line* rightLine, DiffRow* diffRow)
+static void compareLines(Line* leftLine, Line* rightLine, DiffRow* diffRow)
 {
-    bool isDifferent = false;
     num_v index = INIT_ZERO;
 
     while (leftLine->line[index] != END_OF_STRING && rightLine->line[index] != END_OF_STRING)
@@ -23,7 +21,6 @@ static bool compareLines(Line* leftLine, Line* rightLine, DiffRow* diffRow)
         if (leftLine->line[index] != rightLine->line[index])
         {
             addSymbolToDiffRol(diffRow, DIFFERENCE_SYMBOL);
-            isDifferent = true;
         }
         else
         {
@@ -33,11 +30,9 @@ static bool compareLines(Line* leftLine, Line* rightLine, DiffRow* diffRow)
         index++;
     }
 
-    completeLine(leftLine, diffRow, index, &isDifferent);
-    completeLine(rightLine, diffRow, index, &isDifferent);
-
+    completeLine(leftLine, diffRow, index);
+    completeLine(rightLine, diffRow, index);
     addSymbolToDiffRol(diffRow, END_OF_STRING);
-    return isDifferent;
 }
 
 static void oneSideComparison(FileContent* file, num_v rowIndex, FilesComparison* comparison)
@@ -58,12 +53,14 @@ void compareFiles(FileContent* leftFile, FileContent* rightFile, FilesComparison
 
     while (leftFile->size > rowIndex && rightFile->size > rowIndex)
     {
-        if (compareLines(&leftFile->rows[rowIndex], &rightFile->rows[rowIndex], &diffRow))
+        compareLines(&leftFile->rows[rowIndex], &rightFile->rows[rowIndex], &diffRow);
+        
+        if (diffRow.isDifferent)
         {
             addDiffRowTOComparisons(comparisons, diffRow.row, rowIndex);
         }
-
-        diffRow.size = INIT_ZERO;
+        
+        resetDiffRow(&diffRow);
         rowIndex++;
     }
 

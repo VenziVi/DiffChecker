@@ -7,6 +7,7 @@ void initDiffRow(DiffRow* diffRow)
     diffRow->row = malloc(DIFF_ROW_CAPACITY);
     diffRow->capacity = DIFF_ROW_CAPACITY;
     diffRow->size = SIZE_INIT_VALUE;
+    diffRow->isDifferent = false;
 }
 
 void addSymbolToDiffRol(DiffRow* diffRow, char symbol)
@@ -15,8 +16,19 @@ void addSymbolToDiffRol(DiffRow* diffRow, char symbol)
     {
         resizeDiffRow(diffRow);
     }
+
+    if (symbol == DIFFERENCE_SYMBOL)
+    {
+        diffRow->isDifferent = true;
+    }
     
     diffRow->row[diffRow->size++] = symbol;
+}
+
+void resetDiffRow(DiffRow* diffRow)
+{
+    diffRow->isDifferent = false;
+    diffRow->size = INIT_ZERO;
 }
 
 void resizeDiffRow(DiffRow* diffRow)
