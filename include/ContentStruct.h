@@ -1,20 +1,20 @@
 #ifndef CONTENT_STRUCT_H_
 #define CONTENT_STRUCT_H_
 
-#include <stddef.h>
+#include "Defines.h"
 
 typedef struct
 {
     char* line;
-    size_t size;
-    size_t capacity;
+    num_v size;
+    num_v capacity;
 } Line;
 
 typedef struct
 {
     Line* rows;
-    size_t size;
-    size_t capacity;
+    num_v size;
+    num_v capacity;
 } FileContent;
 
 void initFileContent(FileContent* outContent);

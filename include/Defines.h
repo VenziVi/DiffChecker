@@ -1,6 +1,8 @@
 #ifndef DEFINES_H_
 #define DEFINES_H_
 
+#include <stddef.h>
+
 #define FILE_CONTENT_INIT_CAPACITY 10
 #define LINE_INIT_CAPACITY 20
 #define COMPARISON_INIT_CAPACITY 10
@@ -13,5 +15,7 @@
 #define DIFFERENCE_SYMBOL '^'
 #define WHITESPACE_SYMBOL ' '
 #define END_OF_STRING '\0'
+
+typedef size_t num_v;
 
 #endif // DEFINES_H_

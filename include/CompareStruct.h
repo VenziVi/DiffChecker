@@ -1,22 +1,22 @@
 #ifndef COMPARE_STRUCT_H_
 #define COMPARE_STRUCT_H_
 
-#include <stddef.h>
+#include "Defines.h"
 
 typedef struct
 {
     char** rows;
-    size_t* indexes;
-    size_t rowsSize;
-    size_t indexesSize;
-    size_t rowsCapacity;
-    size_t indexesCapacity;
+    num_v* indexes;
+    num_v rowsSize;
+    num_v indexesSize;
+    num_v rowsCapacity;
+    num_v indexesCapacity;
 } FilesComparison;
 
 void initFilesComparison(FilesComparison* comparison);
-void addDiffRowTOComparisons(FilesComparison* comparisons, char* diffRow, size_t rowIndex);
+void addDiffRowTOComparisons(FilesComparison* comparisons, char* diffRow, num_v rowIndex);
 void resizeComparisonsRows(FilesComparison* comparisons);
-void addRowIndexToIndexes(FilesComparison* comparisons, size_t rowIndex);
+void addRowIndexToIndexes(FilesComparison* comparisons, num_v rowIndex);
 void resizeComparisonsIndexes(FilesComparison* comparisons);
 void deinitFileComparison(FilesComparison* comparison);
 

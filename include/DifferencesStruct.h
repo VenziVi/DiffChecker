@@ -1,13 +1,13 @@
 #ifndef DIFFERENCES_STRUCT_H_
 #define DIFFERENCES_STRUCT_H_
 
-#include <stddef.h>
+#include "Defines.h"
 
 typedef struct
 {
     char* row;
-    size_t size;
-    size_t capacity;
+    num_v size;
+    num_v capacity;
 } DiffRow;
 
 void initDiffRow(DiffRow* diffRow);

@@ -1,10 +1,9 @@
 #include "DifferencesStruct.h"
 #include "CompareStruct.h"
 #include "CompareFiles.h"
-#include "Defines.h"
 #include <stdbool.h>
 
-static void completeLine(Line* line, DiffRow* diffRow, size_t index, bool* isDifferent)
+static void completeLine(Line* line, DiffRow* diffRow, num_v index, bool* isDifferent)
 {
     while (line->line[index] != END_OF_STRING)
     {
@@ -17,7 +16,7 @@ static void completeLine(Line* line, DiffRow* diffRow, size_t index, bool* isDif
 static bool compareLines(Line* leftLine, Line* rightLine, DiffRow* diffRow)
 {
     bool isDifferent = false;
-    size_t index = INIT_ZERO;
+    num_v index = INIT_ZERO;
 
     while (leftLine->line[index] != END_OF_STRING && rightLine->line[index] != END_OF_STRING)
     {
@@ -41,7 +40,7 @@ static bool compareLines(Line* leftLine, Line* rightLine, DiffRow* diffRow)
     return isDifferent;
 }
 
-static void oneSideComparison(FileContent* file, size_t rowIndex, FilesComparison* comparison)
+static void oneSideComparison(FileContent* file, num_v rowIndex, FilesComparison* comparison)
 {
     while (file->size > rowIndex)
     {
@@ -55,7 +54,7 @@ void compareFiles(FileContent* leftFile, FileContent* rightFile, FilesComparison
     initFilesComparison(comparisons);
     DiffRow diffRow;
     initDiffRow(&diffRow);
-    size_t rowIndex = INIT_ZERO;
+    num_v rowIndex = INIT_ZERO;
 
     while (leftFile->size > rowIndex && rightFile->size > rowIndex)
     {

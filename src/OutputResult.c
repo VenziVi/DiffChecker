@@ -9,9 +9,9 @@ void printResult(FileContent* leftFile, FileContent* rightFile, FilesComparison*
     }
     else
     {
-        for (size_t i = 0; i < comparisons->indexesSize; i++)
+        for (num_v i = 0; i < comparisons->indexesSize; i++)
         {
-            size_t index = comparisons->indexes[i];
+            num_v index = comparisons->indexes[i];
 
             if (leftFile->size > index)
             {

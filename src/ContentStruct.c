@@ -1,6 +1,5 @@
 #include "ContentStruct.h"
 #include "Messages.h"
-#include "Defines.h"
 #include <stdlib.h>
 
 void initFileContent(FileContent* outContent)
@@ -79,7 +78,7 @@ void resizeFileContent(FileContent* outContent)
 
 void deinitFileContent(FileContent* content)
 {
-    for (size_t i = 0; i <= content->size; i++)
+    for (num_v i = 0; i <= content->size; i++)
     {
         free(content->rows[i].line);
     }

@@ -1,6 +1,5 @@
 #include "DifferencesStruct.h"
 #include "Messages.h"
-#include "Defines.h"
 #include <stdlib.h>
 
 void initDiffRow(DiffRow* diffRow)

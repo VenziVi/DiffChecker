@@ -1,6 +1,5 @@
 #include "CompareStruct.h"
 #include "Messages.h"
-#include "Defines.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -14,7 +13,7 @@ void initFilesComparison(FilesComparison* comparison)
     comparison->indexesCapacity = COMPARISON_INIT_CAPACITY;
 }
 
-void addDiffRowTOComparisons(FilesComparison* comparisons, char* diffRow, size_t rowIndex)
+void addDiffRowTOComparisons(FilesComparison* comparisons, char* diffRow, num_v rowIndex)
 {
     if((comparisons->rowsCapacity - CAPACITY_COMPARE_VALUE) == comparisons->rowsSize)
     {
@@ -25,7 +24,7 @@ void addDiffRowTOComparisons(FilesComparison* comparisons, char* diffRow, size_t
     addRowIndexToIndexes(comparisons, rowIndex);
 }
 
-void addRowIndexToIndexes(FilesComparison* comparisons, size_t rowIndex)
+void addRowIndexToIndexes(FilesComparison* comparisons, num_v rowIndex)
 {
     if((comparisons->indexesCapacity - CAPACITY_COMPARE_VALUE) == comparisons->indexesSize)
     {
@@ -39,7 +38,7 @@ void resizeComparisonsIndexes(FilesComparison* comparisons)
 {
     comparisons->indexesCapacity *= CAPACITY_MULTIPLIER;
 
-    size_t* resizedIndexes = realloc(comparisons->indexes, sizeof(size_t) * comparisons->indexesCapacity);
+    num_v* resizedIndexes = realloc(comparisons->indexes, sizeof(num_v) * comparisons->indexesCapacity);
 
     if (resizedIndexes == NULL)
     {
@@ -67,7 +66,7 @@ void resizeComparisonsRows(FilesComparison* comparisons)
 
 void deinitFileComparison(FilesComparison* comparison)
 {
-    for (size_t i = 0; i < comparison->rowsSize; i++)
+    for (num_v i = 0; i < comparison->rowsSize; i++)
     {
         free(comparison->rows[i]);
     }
