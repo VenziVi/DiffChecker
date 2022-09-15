@@ -14,23 +14,6 @@ void initFilesComparison(FilesComparison* comparison)
     comparison->indexesCapacity = COMPARISON_INIT_CAPACITY;
 }
 
-void initDiffRow(DiffRow* diffRow)
-{
-    diffRow->row = malloc(DIFF_ROW_CAPACITY);
-    diffRow->capacity = DIFF_ROW_CAPACITY;
-    diffRow->size = SIZE_INIT_VALUE;
-}
-
-void addSymbolToDiffRol(DiffRow* diffRow, char symbol)
-{
-    if ((diffRow->capacity - CAPACITY_COMPARE_VALUE) == diffRow->size)
-    {
-        resizeDiffRow(diffRow);
-    }
-    
-    diffRow->row[diffRow->size++] = symbol;
-}
-
 void addDiffRowTOComparisons(FilesComparison* comparisons, char* diffRow, size_t rowIndex)
 {
     if((comparisons->rowsCapacity - CAPACITY_COMPARE_VALUE) == comparisons->rowsSize)
@@ -39,7 +22,7 @@ void addDiffRowTOComparisons(FilesComparison* comparisons, char* diffRow, size_t
     }
 
     comparisons->rows[comparisons->rowsSize++] = strdup(diffRow);
-    comparisons->indexes[comparisons->indexesSize++] = rowIndex;
+    addRowIndexToIndexes(comparisons, rowIndex);
 }
 
 void addRowIndexToIndexes(FilesComparison* comparisons, size_t rowIndex)
@@ -80,26 +63,6 @@ void resizeComparisonsRows(FilesComparison* comparisons)
     }
 
     comparisons->rows = resizedRows;
-}
-
-void resizeDiffRow(DiffRow* diffRow)
-{
-    diffRow->capacity *= INCREASE_VALUE;
-
-    char* resizedDiffRow = realloc(diffRow->row, diffRow->capacity);
-
-    if (resizedDiffRow == NULL)
-    {
-        printResizingError("Resize diffRow");
-        return;
-    }
-    
-    diffRow->row = resizedDiffRow;
-}
-
-void deinitDiffRow(DiffRow* diffRow)
-{
-    free(diffRow->row);
 }
 
 void deinitFileComparison(FilesComparison* comparison)

@@ -1,0 +1,9 @@
+Left  08: hello
+Right 08: 
+Diff  08: ^^^^^
+Left  09: 
+Right 09: hello
+Diff  08: ^^^^^
+Right 10: world
+Right 11: longer
+Right 12: 

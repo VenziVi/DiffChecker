@@ -1,8 +1,8 @@
-#include "CompareFiles.h"
+#include "DifferencesStruct.h"
 #include "CompareStruct.h"
+#include "CompareFiles.h"
 #include "Defines.h"
 #include <stdbool.h>
-#include <string.h>
 
 static void completeLine(Line* line, DiffRow* diffRow, size_t index, bool* isDifferent)
 {

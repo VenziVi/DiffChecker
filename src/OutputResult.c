@@ -5,7 +5,7 @@ void printResult(FileContent* leftFile, FileContent* rightFile, FilesComparison*
 {
     if (comparisons->indexesSize == 0)
     {
-        printf("Files are identicle.\n");
+        printf("Files are identical.\n");
     }
     else
     {

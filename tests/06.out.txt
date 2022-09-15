@@ -1,5 +1,0 @@
-Left  2:
-Diff   : ^^^^^
-Right 2: world
-Right 3: longer
-Right 4: 

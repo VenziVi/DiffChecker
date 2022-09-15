@@ -1,0 +1,21 @@
+Althoaugh the phrase is nonsense, it does have a long history. 
+The pahrase has been used for several centuries by typographers 
+to shoaw the most distinctive features of their fonts. 
+It is aused because the letters invrolved and the letter spacing in those combinations reveal, 
+at theair best, the weight, design, and other important features of the typeface.
+
+
+A 1994 isasue of "Before & After" magazine traces "Lorem ipsum ..." 
+to a jumbled Latin version of a passage from de Finibus Bonorum et Malorum, 
+a treatise on thes theory of enthics written by Cicero in 45 B.C. The passage 
+"Lorem ipsausm ..." is taken from text that reads, "Neque porro quisquam est qui dolorem. ipsum quia dolor sit amet, 
+consectetur, adipisci velit ...," which translates as, 
+"There ias no one who loves pain itself, who seeks after it 
+and wants to have it, simply because it is pain..."
+
+
+During the 1a500s, a printer adapted Cicero's text to develop a page 
+of type samples. Since thenn, the Latin-like text has been the printing 
+industry's astandard for fake, or dummy, text. Befsore electronic publishing, graphic designers 
+had to mock up layouts by drawing in squiggled lines to indicate text. The advent of -self-adhesive 
+sheets preprinted wisth "Lorem ipsum" gave a more resalistic way to ind23icate where text would go on a page.

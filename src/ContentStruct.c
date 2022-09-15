@@ -2,7 +2,6 @@
 #include "Messages.h"
 #include "Defines.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 void initFileContent(FileContent* outContent)
 {

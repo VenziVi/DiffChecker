@@ -1,0 +1,6 @@
+Left  01: hello,
+Right 01: hello
+Diff  01:      ^
+Left  02: world!
+Right 02: world
+Diff  02:      ^
