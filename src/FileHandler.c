@@ -1,16 +1,17 @@
 #include "ContentStruct.h"
+#include "Defines.h"
 #include "FileHandler.h"
 #include <stdio.h>
 
 static void readLinesFromFile(FILE* filePtr, FileContent* outContent)
 {
-    char currentChar = 0;
+    char currentChar = INIT_ZERO;
     
     while ((currentChar = fgetc(filePtr)) != EOF)
     {
         if (currentChar == '\n')
         {       
-            addChar(&outContent->rows[outContent->size], '\0');
+            addChar(&outContent->rows[outContent->size], END_OF_STRING);
             moveToNextRow(outContent);
         }
         else
@@ -20,8 +21,9 @@ static void readLinesFromFile(FILE* filePtr, FileContent* outContent)
     }
 }
 
-bool readFile(FileContent* content, const char *filePath)
+bool readFile(FileContent* outContent, const char *filePath)
 {
+    initFileContent(outContent);
     FILE *filePtr = NULL;
     filePtr = fopen(filePath, "r");
 
@@ -30,7 +32,7 @@ bool readFile(FileContent* content, const char *filePath)
         return false;
     }
 
-    readLinesFromFile(filePtr, content);
+    readLinesFromFile(filePtr, outContent);
     
     fclose(filePtr);
     return true;

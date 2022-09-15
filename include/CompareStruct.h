@@ -3,21 +3,32 @@
 
 #include <stddef.h>
 
-typedef struct 
+typedef struct
 {
-    char* line;
+    char* row;
     size_t size;
-} Comparison;
+    size_t capacity;
+} DiffRow;
 
 typedef struct
 {
-    Comparison* rows;
-    size_t size;
-    size_t differencesCount;
+    char** rows;
+    size_t* indexes;
+    size_t rowsSize;
+    size_t indexesSize;
+    size_t rowsCapacity;
+    size_t indexesCapacity;
 } FilesComparison;
 
-FilesComparison* initFilesComparison(size_t size);
-void initDiffIndexes(Comparison* comparison, size_t size);
-void deinitFilesComaprison(FilesComparison* comparisons);
+void initFilesComparison(FilesComparison* comparison);
+void initDiffRow(DiffRow* diffRow);
+void addSymbolToDiffRol(DiffRow* diffRow, char symbol);
+void resizeDiffRow(DiffRow* diffRow);
+void addDiffRowTOComparisons(FilesComparison* comparisons, char* diffRow, size_t rowIndex);
+void resizeComparisonsRows(FilesComparison* comparisons);
+void addRowIndexToIndexes(FilesComparison* comparisons, size_t rowIndex);
+void resizeComparisonsIndexes(FilesComparison* comparisons);
+void deinitDiffRow(DiffRow* diffRow);
+void deinitFileComparison(FilesComparison* comparison);
 
 #endif // COMPARE_STRUCT_H_

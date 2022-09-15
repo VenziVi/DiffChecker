@@ -4,6 +4,6 @@
 #include "ContentStruct.h"
 #include "CompareStruct.h"
 
-FilesComparison* compareFiles(FileContent* leftFile, FileContent* rightFile);
+void compareFiles(FileContent* leftFile, FileContent* rightFile, FilesComparison* comparisons);
 
 #endif // COMPARE_FILES_H_

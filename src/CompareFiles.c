@@ -1,78 +1,75 @@
 #include "CompareFiles.h"
 #include "CompareStruct.h"
+#include "Defines.h"
 #include <stdbool.h>
+#include <string.h>
 
-static void oneSideComparison(Line* line, Comparison* comparison)
+static void completeLine(Line* line, DiffRow* diffRow, size_t index, bool* isDifferent)
 {
-    size_t index = 0;
-    initDiffIndexes(comparison, line->size);
-
-    while (line->line[index] != '\0')
+    while (line->line[index] != END_OF_STRING)
     {
-        comparison->line[index++] = '^';
-        comparison->size++;
+        addSymbolToDiffRol(diffRow, DIFFERENCE_SYMBOL);
+        *isDifferent = true;
+        index++;
     }
-
-    comparison->line[index] = '\0';
 }
 
-static bool compareLines(Line* leftLine, Line* rightLine, Comparison* comparison)
+static bool compareLines(Line* leftLine, Line* rightLine, DiffRow* diffRow)
 {
-    Line* longerLine = (leftLine->size > rightLine->size) ? leftLine : rightLine;
-    Line* shorterLine = (leftLine->size <= rightLine->size) ? leftLine : rightLine;
-    size_t size = longerLine->size;
-    bool isdifferent = false;
-    initDiffIndexes(comparison, size);
-    size_t index = 0;
+    bool isDifferent = false;
+    size_t index = INIT_ZERO;
 
-    while (shorterLine->line[index] != '\0')
+    while (leftLine->line[index] != END_OF_STRING && rightLine->line[index] != END_OF_STRING)
     {
-        if (shorterLine->line[index] != longerLine->line[index])
+        if (leftLine->line[index] != rightLine->line[index])
         {
-            comparison->line[index++] = '^';
-            comparison->size++;
-            isdifferent = true;
+            addSymbolToDiffRol(diffRow, DIFFERENCE_SYMBOL);
+            isDifferent = true;
         }
         else
         {
-            comparison->line[index++] = ' ';
+            addSymbolToDiffRol(diffRow, WHITESPACE_SYMBOL);
         }
+
+        index++;
     }
 
-    while (longerLine->line[index] != '\0')
-    {
-        comparison->line[index++] = '^';
-        comparison->size++;
-        isdifferent = true;
-    }
+    completeLine(leftLine, diffRow, index, &isDifferent);
+    completeLine(rightLine, diffRow, index, &isDifferent);
 
-    comparison->line[index] = '\0';
-    return isdifferent;
+    addSymbolToDiffRol(diffRow, END_OF_STRING);
+    return isDifferent;
 }
 
-FilesComparison* compareFiles(FileContent* leftFile, FileContent* rightFile)
+static void oneSideComparison(FileContent* file, size_t rowIndex, FilesComparison* comparison)
 {
-    FileContent* longerFile = (leftFile->size > rightFile->size) ? leftFile : rightFile;
-    size_t size = longerFile->size;
-    FilesComparison* comparison = initFilesComparison(size);
-    size_t rowIndex = 0;
+    while (file->size > rowIndex)
+    {
+        addRowIndexToIndexes(comparison, rowIndex);
+        rowIndex++;
+    }
+}
+
+void compareFiles(FileContent* leftFile, FileContent* rightFile, FilesComparison* comparisons)
+{
+    initFilesComparison(comparisons);
+    DiffRow diffRow;
+    initDiffRow(&diffRow);
+    size_t rowIndex = INIT_ZERO;
 
     while (leftFile->size > rowIndex && rightFile->size > rowIndex)
     {
-        if (compareLines(&leftFile->rows[rowIndex], &rightFile->rows[rowIndex], &comparison->rows[rowIndex]))
+        if (compareLines(&leftFile->rows[rowIndex], &rightFile->rows[rowIndex], &diffRow))
         {
-            comparison->differencesCount++;
+            addDiffRowTOComparisons(comparisons, diffRow.row, rowIndex);
         }
-        rowIndex++;
-    }
-    
-    while (longerFile->size > rowIndex)
-    {
-        oneSideComparison(&longerFile->rows[rowIndex], &comparison->rows[rowIndex]);
-        rowIndex++;
-        comparison->differencesCount++;
-    }
-    
-    return comparison;
 
+        diffRow.size = INIT_ZERO;
+        rowIndex++;
+    }
+
+    oneSideComparison(leftFile, rowIndex, comparisons);
+    oneSideComparison(rightFile, rowIndex, comparisons);
+
+    deinitDiffRow(&diffRow);
 }

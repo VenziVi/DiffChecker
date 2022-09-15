@@ -4,17 +4,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-FileContent* initFileContent(void)
+void initFileContent(FileContent* outContent)
 {
-    FileContent* outContent = malloc(sizeof(FileContent));
-
     outContent->rows = malloc(sizeof(Line) * FILE_CONTENT_INIT_CAPACITY);
     outContent->capacity = FILE_CONTENT_INIT_CAPACITY;
     outContent->size = SIZE_INIT_VALUE;
 
     initLine(outContent);
-
-    return outContent;
 }
 
 void initLine(FileContent* content)
@@ -31,7 +27,7 @@ void addChar(Line* line, char currChar)
         resizeLine(line);
     }
 
-    if (currChar == '\0')
+    if (currChar == END_OF_STRING)
     {
         line->line[--line->size] = currChar;
     }
@@ -90,5 +86,4 @@ void deinitFileContent(FileContent* content)
     }
 
     free(content->rows);
-    free(content);
 }

@@ -17,7 +17,7 @@ typedef struct
     size_t capacity;
 } FileContent;
 
-FileContent* initFileContent(void);
+void initFileContent(FileContent* outContent);
 void initLine(FileContent* outContent);
 void addChar(Line* line, char currentChar);
 void moveToNextRow(FileContent* outContent);
