@@ -22,7 +22,7 @@ void addSymbolToDiffRol(DiffRow* diffRow, char symbol)
 
 void resizeDiffRow(DiffRow* diffRow)
 {
-    diffRow->capacity *= INCREASE_VALUE;
+    diffRow->capacity *= CAPACITY_MULTIPLIER;
 
     char* resizedDiffRow = realloc(diffRow->row, diffRow->capacity);
 

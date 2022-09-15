@@ -37,7 +37,7 @@ void addRowIndexToIndexes(FilesComparison* comparisons, size_t rowIndex)
 
 void resizeComparisonsIndexes(FilesComparison* comparisons)
 {
-    comparisons->indexesCapacity *= INCREASE_VALUE;
+    comparisons->indexesCapacity *= CAPACITY_MULTIPLIER;
 
     size_t* resizedIndexes = realloc(comparisons->indexes, sizeof(size_t) * comparisons->indexesCapacity);
 
@@ -52,7 +52,7 @@ void resizeComparisonsIndexes(FilesComparison* comparisons)
 
 void resizeComparisonsRows(FilesComparison* comparisons)
 {
-    comparisons->rowsCapacity *= INCREASE_VALUE;
+    comparisons->rowsCapacity *= CAPACITY_MULTIPLIER;
 
     char** resizedRows = realloc(comparisons->rows, sizeof(char*) * comparisons->rowsCapacity);
 

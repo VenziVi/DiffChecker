@@ -23,7 +23,6 @@ static void readLinesFromFile(FILE* filePtr, FileContent* outContent)
 
 bool readFile(FileContent* outContent, const char *filePath)
 {
-    initFileContent(outContent);
     FILE *filePtr = NULL;
     filePtr = fopen(filePath, "r");
 
@@ -32,6 +31,7 @@ bool readFile(FileContent* outContent, const char *filePath)
         return false;
     }
 
+    initFileContent(outContent);
     readLinesFromFile(filePtr, outContent);
     
     fclose(filePtr);

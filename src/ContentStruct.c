@@ -38,7 +38,7 @@ void addChar(Line* line, char currChar)
 
 void resizeLine(Line* line)
 {
-    line->capacity *= INCREASE_VALUE;
+    line->capacity *= CAPACITY_MULTIPLIER;
 
     char* resizedLine = realloc(line->line, sizeof(char) * line->capacity);
 
@@ -64,7 +64,7 @@ void moveToNextRow(FileContent* outContent)
 
 void resizeFileContent(FileContent* outContent)
 {
-    outContent->capacity *= INCREASE_VALUE;
+    outContent->capacity *= CAPACITY_MULTIPLIER;
 
     Line* resizedContent = realloc(outContent->rows, sizeof(Line) * outContent->capacity);
 

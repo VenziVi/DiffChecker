@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
     if (!readFile(&leftFile, argv[1]))
     {
         printFileError(argv[1]);
-        deinitFileContent(&leftFile);
         return EXIT_FAILURE;
     }
 
@@ -28,7 +27,6 @@ int main(int argc, char *argv[])
     {
         printFileError(argv[2]);
         deinitFileContent(&leftFile);
-        deinitFileContent(&rightFile);
         return EXIT_FAILURE;
     }
 
